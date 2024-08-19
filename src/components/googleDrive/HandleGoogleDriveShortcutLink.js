@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import handleAccessTokenExpiration from "./HandleAccessTokenExpiration";
+import handleAccessTokenExpiration from "./googleDrive/HandleAccessTokenExpiration";
 
 const handleGoogleDriveShortcutLink = async (event) => {
 

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import handleAccessTokenExpiration from "./HandleAccessTokenExpiration";
 import handleGoogleDriveShortcutLink from "./HandleGoogleDriveShortcutLink";
-import styles from "../styles/Home.module.css";
 
 const SearchGoogleDrive = () => {
   const [targetFolderId, setTargetFolderId] = useState(

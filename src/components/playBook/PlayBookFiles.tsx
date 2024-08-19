@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/dist/client/router";
-import styles from "../styles/Home.module.css";
-import handleAccessTokenExpiration from "./HandleAccessTokenExpiration";
-import handleGoogleDriveShortcutLink from "./HandleGoogleDriveShortcutLink";
+import handleAccessTokenExpiration from "../googleDrive/HandleAccessTokenExpiration";
+import handleGoogleDriveShortcutLink from "../googleDrive/HandleGoogleDriveShortcutLink";
 
 const PlayBookFiles = () => {
   const router = useRouter();
@@ -43,11 +42,11 @@ const PlayBookFiles = () => {
         {loading && <div style={{ display: "none" }}>Loading...</div>}
         {error && <div>{error.message}</div>}
         <ul
-          className={styles.filesContainer}
+          className=""
           style={{ width: "100%", textAlign: "left" }}
         >
           {results.map((result) => (
-            <li key={result.id} className={styles.fileResult}>
+            <li key={result.id} className="">
               <a
                 href={`https://docs.google.com/document/d/${result.id}/edit`}
                 data-file-id={result.id}

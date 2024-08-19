@@ -1,9 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import styles from "../styles/Home.module.css";
 
 const HeaderImage = () => (
-  <div className={styles.headerContainer}>
+  <div className="">
     <Link href={process.env.HOMEPAGE_URL ?? ""}>
       <div
         style={{
