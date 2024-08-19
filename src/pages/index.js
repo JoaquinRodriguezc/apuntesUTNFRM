@@ -1,26 +1,27 @@
 import Head from "next/head";
 import React, { useState } from "react";
-import styles from "../styles/Home.module.css";
-import HeaderImage from "../components/googleDrive/HeaderImage";
-import GoogleDriveSearch from "../components/GoogleDriveSearch";
-import PlayBookFolders from "../components/PlayBookFolders";
+import HeaderImage from "../components/common/HeaderImage";
+import GoogleDriveSearch from "../components/googleDrive/GoogleDriveSearch";
+import PlayBookFolders from "../components/common/PlayBookFolders";
+import Title from "../components/common/Title";
+import Footer from "./../components/common/Footer";
 
 export default function Home() {
   return (
-    <div className="flex justify-center h-screen ">
+    <div className="flex justify-center items-center flex-col h-screen w-screen">
       <Head>
         <title>ApuntesUTN</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="">
-        <h1 className="text-2xl">APUNTES UTN</h1>
+      <main className="h-full gap-8">
         <HeaderImage />
+        <Title page="index" />
         <GoogleDriveSearch />
         <PlayBookFolders />
       </main>
 
-      <footer className={styles.footer}></footer>
+      <Footer />
     </div>
   );
 }

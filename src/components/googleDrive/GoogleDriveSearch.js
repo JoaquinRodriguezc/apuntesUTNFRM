@@ -19,13 +19,9 @@ const SearchGoogleDrive = () => {
     ) {
       return;
     }
-
-    if (
-      !event.target.className.includes(styles.searchContainer) &&
-      !event.target.className.includes(styles.searchInput) &&
-      !event.target.className.includes(styles.searchResult) &&
-      !event.target.className.includes(styles.searchResultLink)
-    ) {
+    // Verifica si el clic fue fuera de los elementos deseados (ajusta según sea necesario)
+    // Si la lógica anterior ya no aplica, puedes cambiarla o simplificarla
+    if (!event.target.className.includes("some-other-class")) {
       setResults([]);
     }
   };
@@ -90,43 +86,37 @@ const SearchGoogleDrive = () => {
       searchFiles();
     }
   };
-
+  
   return (
-    <div style={{ width: "100%", textAlign: "left" }}>
-      <input
-        type="text"
-        value={query}
-        onChange={(event) => setQuery(event.target.value)}
-        onKeyPress={handleKeyPress}
-        className={styles.searchInput}
-      />
-      <button
-        onClick={searchFiles}
-        style={{
-          width: "6vw",
-          textAlign: "center",
-          paddingLeft: "12px",
-          paddingRight: "12px",
-          paddingTop: "10px",
-          paddingBottom: "12px",
-        }}
-      >
-        Search
-      </button>
-      {loading && <div style={{ display: "nonxe" }}>Loading...</div>}
+    <div className="w-full h-max pt-5 pb-5">
+      <div className="w-full flex justify-between">
+        <input
+          type="text"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          onKeyPress={handleKeyPress}
+          className="w-9/12 rounded-md p-4"
+          placeholder="que esta buscando"
+        />
+        <button
+          onClick={searchFiles}
+          className="w-2/12 bg-slate-700 rounded-md p-4 hover:bg-slate-500"
+        >
+          Search
+        </button>
+      </div>
+
+      {loading && <p className="text-lg font-semibold pt-5">Loading...</p>}
       {error && <div>{error.message}</div>}
-      <ul
-        style={{ width: "100%", textAlign: "left" }}
-        className={styles.searchContainer}
-      >
+      <ul className="w-full text-left pt-2">
         {(results || []).map((result) => (
-          <li key={result.id} className={styles.searchResult}>
+          <li key={result.id} className="pt-3 pb-3">
             <a
               href={`https://docs.google.com/document/d/${result.id}/edit`}
               data-file-id={result.id}
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.searchResultLink}
+              className="font-semibold text-lg p-2 rounded-md bg-sky-600 hover:bg-sky-400"
               data-mime-type={result.mimeType}
               onClick={handleGoogleDriveShortcutLink}
             >

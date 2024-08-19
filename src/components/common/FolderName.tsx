@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import BackButton from "./BackButton";
-import styles from "../styles/Home.module.css";
 import { NextApiResponse } from "next";
 
 const FolderName = () => {
@@ -29,17 +28,15 @@ const FolderName = () => {
   }, [fid, router]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <p className="text-lg font-semibold pt-5 pb-5">Loading...</p>;
   }
 
   if (router && loaded && fid !== process.env.TARGET_FOLDER) {
     return (
-      <div className={styles.FolderHeader}>
-        <h2>
-          <BackButton />
-          {fname}
-        </h2>
-      </div>
+      <h2 className="text-2xl font-semibold flex flex-row items-center gap-8 pb-5">
+        <BackButton />
+        {fname}
+      </h2>
     );
   }
 

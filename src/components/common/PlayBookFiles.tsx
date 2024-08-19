@@ -38,15 +38,15 @@ const PlayBookFiles = () => {
 
   return (
     fid !== process.env.TARGET_FOLDER && (
-      <div style={{ width: "100%", textAlign: "left" }}>
+      <div className="w-full flex flex-col justify-start items-center pt-5">
         {loading && <div style={{ display: "none" }}>Loading...</div>}
         {error && <div>{error.message}</div>}
         <ul
-          className=""
+          className="bg-slate-800 p-5 rounded-md"
           style={{ width: "100%", textAlign: "left" }}
         >
           {results.map((result) => (
-            <li key={result.id} className="">
+            <li key={result.id} className="text-white font-semibold text-md">
               <a
                 href={`https://docs.google.com/document/d/${result.id}/edit`}
                 data-file-id={result.id}

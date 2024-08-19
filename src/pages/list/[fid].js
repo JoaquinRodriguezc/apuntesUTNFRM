@@ -1,23 +1,27 @@
 import Head from "next/head";
 import React, { useState } from "react";
-import styles from "../../styles/Home.module.css";
-import HeaderImage from "../../components/HeaderImage";
-import GoogleDriveSearch from "../../components/GoogleDriveSearch";
-import PlayBookFolders from "../../components/PlayBookFolders";
-import PlayBookFiles from "../../components/PlayBookFiles";
-import FolderName from "../../components/FolderName";
+import HeaderImage from "../../components/common/HeaderImage";
+import GoogleDriveSearch from "../../components/googleDrive/GoogleDriveSearch";
+import PlayBookFolders from "../../components/common/PlayBookFolders";
+import PlayBookFiles from "../../components/common/PlayBookFiles";
+import FolderName from "../../components/common/FolderName";
+import Footer from '../../components/common/Footer';
+import Title from "../../components/common/Title";
 
 export default function Drilldown() {
   return (
-    <div className={styles.container}>
+    <div className="flex justify-center items-center flex-col h-screen w-screen">
       <Head>
-        <title>Create Next App</title>
+        <title>Apuntes UTN</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main className="h-full gap-8">
         <HeaderImage />
-        <h1>APUNTES UTN</h1>
+
+        <Title 
+        page="list"
+        />
 
         <GoogleDriveSearch />
 
@@ -27,8 +31,8 @@ export default function Drilldown() {
 
         <PlayBookFiles />
       </main>
-
-      <footer className={styles.footer}></footer>
+      
+      <Footer />
     </div>
   );
 }

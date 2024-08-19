@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import styles from "../styles/Home.module.css";
-import IconUpLevel from "../googleDrive/IconUpLevel";
+import IconUpLevel from "./IconUpLevel";
 import { NextApiResponse } from "next";
 
 const BackButton = () => {
@@ -35,7 +34,7 @@ const BackButton = () => {
       key={fparent}
     >
       <button
-        className={styles.BackButton}
+        className="h-10 w-8 hover:scale-110"
         onClick={() => {
           const container = document.querySelector(".searchContainer");
           if (typeof container != "undefined" && container) {

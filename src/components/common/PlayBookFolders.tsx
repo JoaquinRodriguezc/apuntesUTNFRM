@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/dist/client/router";
-import styles from "../styles/Home.module.css";
-import handleAccessTokenExpiration from "./googleDrive/HandleAccessTokenExpiration";
+import handleAccessTokenExpiration from "../googleDrive/HandleAccessTokenExpiration";
 import Link from "next/link";
 import type { NextApiRequest, NextApiResponse } from "next";
 const PlayBookFolders = () => {
@@ -42,10 +41,10 @@ const PlayBookFolders = () => {
   }, [fid]);
 
   return (
-    <div style={{ width: "100%", textAlign: "left" }}>
+    <div className="w-full">
       {loading && <div style={{ display: "none" }}>Loading...</div>}
       {error && <div>{error.message}</div>}
-      <div className={styles.grid}>
+      <div className="w-full flex flex-col items-start gap-3">
         {results.map((result) => (
           <Link
             href={{
@@ -57,8 +56,8 @@ const PlayBookFolders = () => {
             as={`/list/${result.id}`}
             key={result.id}
           >
-            <div
-              className={styles.card}
+            <button
+              className="cursor-pointer flex justify-between bg-gray-800 px-3 py-2 rounded-md text-white tracking-wider shadow-xl hover:bg-gray-900 hover:scale-105 duration-500 hover:ring-1 font-mono w-full"
               onClick={() => {
                 const container = document.querySelector(".searchContainer");
                 if (container) {
@@ -66,8 +65,22 @@ const PlayBookFolders = () => {
                 }
               }}
             >
-              <h3>{result.name}</h3>
-            </div>
+              {result.name}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                className="w-5 h-5 animate-bounce"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+                ></path>
+              </svg>
+            </button>
           </Link>
         ))}
       </div>
