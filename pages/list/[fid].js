@@ -1,12 +1,11 @@
-import Head from 'next/head'
-import React, { useState } from 'react';
-import styles from '../../styles/Home.module.css'
-import HeaderImage from '../../components/HeaderImage';
-import GoogleDriveSearch from '../../components/GoogleDriveSearch'
-import SimpleSignOn from '../../components/SimpleSignOn'
-import PlayBookFolders from '../../components/PlayBookFolders';
-import PlayBookFiles from '../../components/PlayBookFiles';
-import FolderName from '../../components/FolderName';
+import Head from "next/head";
+import React, { useState } from "react";
+import styles from "../../styles/Home.module.css";
+import HeaderImage from "../../components/HeaderImage";
+import GoogleDriveSearch from "../../components/GoogleDriveSearch";
+import PlayBookFolders from "../../components/PlayBookFolders";
+import PlayBookFiles from "../../components/PlayBookFiles";
+import FolderName from "../../components/FolderName";
 
 export default function Drilldown() {
   return (
@@ -16,26 +15,20 @@ export default function Drilldown() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <SimpleSignOn>
-        <main className={styles.main}>
+      <main className={styles.main}>
+        <HeaderImage />
+        <h1>APUNTES UTN</h1>
 
-          <HeaderImage />
-          
-          <GoogleDriveSearch />
+        <GoogleDriveSearch />
 
-          <FolderName />
+        <FolderName />
 
-          <PlayBookFolders />
+        <PlayBookFolders />
 
-          <PlayBookFiles />
+        <PlayBookFiles />
+      </main>
 
-        </main>
-
-        <footer className={styles.footer}>
-          
-        </footer>
-      
-      </SimpleSignOn>
+      <footer className={styles.footer}></footer>
     </div>
-  )
+  );
 }

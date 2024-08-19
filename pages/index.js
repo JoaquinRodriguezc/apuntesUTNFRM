@@ -1,10 +1,9 @@
-import Head from 'next/head'
-import React, { useState } from 'react';
-import styles from '../styles/Home.module.css'
-import HeaderImage from '../components/HeaderImage';
-import GoogleDriveSearch from '../components/GoogleDriveSearch'
-import SimpleSignOn from '../components/SimpleSignOn'
-import PlayBookFolders from '../components/PlayBookFolders';
+import Head from "next/head";
+import React, { useState } from "react";
+import styles from "../styles/Home.module.css";
+import HeaderImage from "../components/HeaderImage";
+import GoogleDriveSearch from "../components/GoogleDriveSearch";
+import PlayBookFolders from "../components/PlayBookFolders";
 
 export default function Home() {
   return (
@@ -14,21 +13,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <SimpleSignOn>
-        <main className={styles.main}>
-          <HeaderImage />
-          
-          <GoogleDriveSearch />
+      <main className={styles.main}>
+        <h1>APUNTES UTN</h1>
+        <HeaderImage />
+        <GoogleDriveSearch />
 
-          <PlayBookFolders />
+        <PlayBookFolders />
+      </main>
 
-        </main>
-
-        <footer className={styles.footer}>
-          
-        </footer>
-      
-      </SimpleSignOn>
+      <footer className={styles.footer}></footer>
     </div>
-  )
+  );
 }
