@@ -21,7 +21,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/layouts/layout.js"  ],
   "exclude": [
     "node_modules"
   ]
