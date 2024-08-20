@@ -17,4 +17,4 @@ class Drive {
     return instance;
   }
 }
-export default Drive;
+export const drive = new Drive() as drive_v3.Drive;

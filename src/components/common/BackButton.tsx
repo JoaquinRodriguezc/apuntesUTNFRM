@@ -13,7 +13,7 @@ const BackButton = () => {
   useEffect(() => {
     const fetchData = async () => {
       const res: Response = await fetch(
-        `http://localhost:3000/api/files/${fid}/parents`
+        `http://localhost:3000/api/folders/${fid}?search=parents`
       );
       const data = await res.json();
       setFParent(data.data.parents[0]);

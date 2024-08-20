@@ -1,7 +1,8 @@
-import { google, drive_v3 } from "googleapis";
 import { NextApiRequest, NextApiResponse } from "next";
-import Drive from "../../utils/drive";
-const drive = new Drive() as drive_v3.Drive;
+import { drive } from "../../../../utils/drive";
+import { drive_v3 } from "googleapis";
+//GET - FILES IN A FOLDER GET API/FOLDER/[fid]/FILES
+// TODO: CHECK REQ.METHOD
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -9,26 +10,7 @@ export default async function handler(
   const fid = req.query?.fid
     ? (req.query.fid as string)
     : process.env.NEXT_PUBLIC_TARGET_FOLDER;
-  const name = req.query.name ? (req.query.name as string) : undefined;
-  const files = req.query.files ? (req.query.files as string) : undefined;
-  const query = req.query.query ? (req.query.query as string) : undefined;
-  console.log(fid, name, files);
-  if (name === "true") {
-    const data: any = (
-      await drive.files.get({
-        fileId: fid,
-      })
-    ).data;
-    return res.status(200).json(data);
-  }
-  if (files === "true") {
-    const data: drive_v3.Schema$FileList = (
-      await drive.files.list({
-        q: `mimeType!='application/vnd.google-apps.folder' and trashed = false and parents in '${fid}'`,
-      })
-    ).data;
-    return res.status(200).json(data);
-  }
+  const query = req.query.query;
   if (query) {
     const folders = await getFolderParents(fid);
     const data: drive_v3.Schema$FileList = (
@@ -42,7 +24,7 @@ export default async function handler(
   } else {
     const data: drive_v3.Schema$FileList = (
       await drive.files.list({
-        q: `mimeType='application/vnd.google-apps.folder' and trashed = false and parents in '${fid}'`,
+        q: `mimeType!='application/vnd.google-apps.folder' and trashed = false and parents in '${fid}'`,
       })
     ).data;
     return res.status(200).json(data);
@@ -51,7 +33,7 @@ export default async function handler(
 async function getFolderParents(fid: string): Promise<string[]> {
   const targetFolderId = process.env.NEXT_PUBLIC_TARGET_FOLDER;
   let folderIds = [targetFolderId];
-  async function getFolderId(fid) {
+  async function getFolderId(fid: string) {
     if (fid === "undefined") {
       fid = targetFolderId;
     }

@@ -9,6 +9,7 @@ function SearchGoogleDrive() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const router = useRouter();
+  const fid = router.query.fid;
   const handleClickOutside = (event) => {
     if (
       !event.target.className ||
@@ -37,7 +38,7 @@ function SearchGoogleDrive() {
 
     try {
       const res = await fetch(
-        `http://localhost:3000/api/files?query=${query}&fid=${router.query.fid}`
+        `http://localhost:3000/api/folders/${fid}/files?query=${query}`
       );
       const data = await res.json();
       console.log(data);

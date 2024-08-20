@@ -16,7 +16,7 @@ const FolderName = () => {
     setLoading(true);
     const fetchData = async () => {
       const res: Response = await fetch(
-        `http://localhost:3000/api/files?fid=${fid}&name=true`
+        `http://localhost:3000/api/folders/${fid}`
       );
       const data = await res.json();
       console.log(data);

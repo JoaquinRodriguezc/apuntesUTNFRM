@@ -4,7 +4,7 @@ import handleAccessTokenExpiration from "../googleDrive/HandleAccessTokenExpirat
 import Link from "next/link";
 import Image from "next/image";
 import type { NextApiRequest, NextApiResponse } from "next";
-import Folder from "../../../public/folder.png"
+import Folder from "../../../public/folder.png";
 
 const PlayBookFolders = () => {
   const router = useRouter();
@@ -22,13 +22,7 @@ const PlayBookFolders = () => {
 
       try {
         let res: Response;
-        if (fid) {
-          console.log("mandé fid", fid);
-          res = await fetch(`http://localhost:3000/api/files?fid=${fid}`);
-        } else {
-          console.log("no mandé fid");
-          res = await fetch(`http://localhost:3000/api/files`);
-        }
+        res = await fetch(`http://localhost:3000/api/folders/${fid}/folders`);
         const data = await res.json();
         setResults(data.files);
         setLoading(false);
@@ -60,7 +54,6 @@ const PlayBookFolders = () => {
             key={result.id}
             className="w-full"
           >
-            
             <button
               className="cursor-pointer flex justify-between items-center bg-gray-800 px-3 py-2 rounded-md text-white font-bold text-xl tracking-wider shadow-xl hover:bg-gray-900 hover:scale-105 duration-500 hover:ring-1 font-mono w-full"
               onClick={() => {
@@ -70,7 +63,11 @@ const PlayBookFolders = () => {
                 }
               }}
             >
-              <Image src={Folder} alt="Picture of the author" className="h-1/6 w-1/12" />
+              <Image
+                src={Folder}
+                alt="Picture of the author"
+                className="h-1/6 w-1/12"
+              />
               {result.name}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
