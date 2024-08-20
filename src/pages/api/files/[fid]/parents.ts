@@ -1,18 +1,11 @@
 import { google, drive_v3 } from "googleapis";
 import { NextApiRequest, NextApiResponse } from "next";
+import Drive from "../../../../utils/drive";
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const auth = new google.auth.GoogleAuth({
-    keyFile: "./secret.key.json",
-    scopes: "https://www.googleapis.com/auth/drive",
-  });
-
-  const drive = google.drive({
-    version: "v3",
-    auth: auth,
-  });
+  const drive = new Drive() as drive_v3.Drive;
   let fid = req.query.fid as string;
 
   const response: any = await drive.files.get({

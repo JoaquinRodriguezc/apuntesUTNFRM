@@ -1,17 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
 import handleAccessTokenExpiration from "./HandleAccessTokenExpiration";
 import handleGoogleDriveShortcutLink from "./HandleGoogleDriveShortcutLink";
+import { useRouter } from "next/router";
 
-const SearchGoogleDrive = () => {
-  const [targetFolderId, setTargetFolderId] = useState(
-    process.env.NEXT_PUBLIC_TARGET_FOLDER
-  );
-  const [query, setQuery] = useState("");
+function SearchGoogleDrive() {
+  const [query, setQuery] = useState<string>("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const router = useRouter();
   const handleClickOutside = (event) => {
     if (
       !event.target.className ||
@@ -33,43 +30,18 @@ const SearchGoogleDrive = () => {
     };
   }, []);
 
-  const searchFiles = async () => {
+  async function searchFiles() {
     setLoading(true);
     setError(null);
     setResults([]);
 
-    const accessToken = localStorage.getItem("access_token");
-    let folderIds = [targetFolderId];
-
     try {
-      let res = await axios.get("https://www.googleapis.com/drive/v3/files", {
-        headers: { Authorization: `Bearer ${accessToken}` },
-        params: {
-          source: "GoogleDriveSource",
-          includeTeamDriveItems: true,
-          supportsAllDrives: true,
-          q: `mimeType='application/vnd.google-apps.folder' and trashed = false and parents in '${targetFolderId}'`,
-        },
-      });
-
-      const subFolders = res.data.files || [];
-      subFolders.forEach((folder) => {
-        folderIds.push(folder.id);
-      });
-
-      res = await axios.get("https://www.googleapis.com/drive/v3/files", {
-        headers: { Authorization: `Bearer ${accessToken}` },
-        params: {
-          source: "GoogleDriveSource",
-          includeTeamDriveItems: true,
-          supportsAllDrives: true,
-          q: `mimeType!='application/vnd.google-apps.folder' and trashed = false and parents in '${folderIds.join(
-            "','"
-          )}' and (name contains '${query}' or fullText contains '${query}')`,
-        },
-      });
-
-      setResults(res.data.files || []);
+      const res = await fetch(
+        `http://localhost:3000/api/files?query=${query}&fid=${router.query.fid}`
+      );
+      const data = await res.json();
+      console.log(data);
+      setResults(data.files || []);
     } catch (err) {
       if (err.response && err.response.status === 401) {
         handleAccessTokenExpiration();
@@ -79,14 +51,14 @@ const SearchGoogleDrive = () => {
     }
 
     setLoading(false);
-  };
+  }
 
-  const handleKeyPress = (event) => {
+  const handleKeyPress = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
-      searchFiles();
+      void searchFiles();
     }
   };
-  
+
   return (
     <div className="w-full flex flex-col justify-center items-center h-max pt-5 pb-5">
       <div className="w-[800px] flex items-center justify-evenly">
@@ -94,7 +66,7 @@ const SearchGoogleDrive = () => {
           type="text"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyPress}
           className="w-9/12 rounded-md p-4"
           placeholder="Apuntes UTN MDZ"
         />
@@ -127,6 +99,6 @@ const SearchGoogleDrive = () => {
       </ul>
     </div>
   );
-};
+}
 
 export default SearchGoogleDrive;
