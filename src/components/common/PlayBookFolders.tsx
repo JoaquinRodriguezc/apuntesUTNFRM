@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/dist/client/router";
 import handleAccessTokenExpiration from "../googleDrive/HandleAccessTokenExpiration";
 import Link from "next/link";
+import Image from "next/image";
 import type { NextApiRequest, NextApiResponse } from "next";
+import Folder from "../../../public/folder.png"
+
 const PlayBookFolders = () => {
   const router = useRouter();
   const fid = router.query.fid;
@@ -55,9 +58,11 @@ const PlayBookFolders = () => {
             }}
             as={`/list/${result.id}`}
             key={result.id}
+            className="w-full"
           >
+            
             <button
-              className="cursor-pointer flex justify-between bg-gray-800 px-3 py-2 rounded-md text-white tracking-wider shadow-xl hover:bg-gray-900 hover:scale-105 duration-500 hover:ring-1 font-mono w-full"
+              className="cursor-pointer flex justify-between items-center bg-gray-800 px-3 py-2 rounded-md text-white font-bold text-xl tracking-wider shadow-xl hover:bg-gray-900 hover:scale-105 duration-500 hover:ring-1 font-mono w-full"
               onClick={() => {
                 const container = document.querySelector(".searchContainer");
                 if (container) {
@@ -65,6 +70,7 @@ const PlayBookFolders = () => {
                 }
               }}
             >
+              <Image src={Folder} alt="Picture of the author" className="h-1/6 w-1/12" />
               {result.name}
               <svg
                 xmlns="http://www.w3.org/2000/svg"

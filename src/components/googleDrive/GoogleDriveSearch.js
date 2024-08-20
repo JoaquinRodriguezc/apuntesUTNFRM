@@ -5,7 +5,7 @@ import handleGoogleDriveShortcutLink from "./HandleGoogleDriveShortcutLink";
 
 const SearchGoogleDrive = () => {
   const [targetFolderId, setTargetFolderId] = useState(
-    process.env.TARGET_FOLDER
+    process.env.NEXT_PUBLIC_TARGET_FOLDER
   );
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
@@ -96,7 +96,7 @@ const SearchGoogleDrive = () => {
           onChange={(event) => setQuery(event.target.value)}
           onKeyPress={handleKeyPress}
           className="w-9/12 rounded-md p-4"
-          placeholder="que esta buscando"
+          placeholder="Apuntes UTN MDZ"
         />
         <button
           onClick={searchFiles}

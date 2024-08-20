@@ -31,7 +31,7 @@ const FolderName = () => {
     return <p className="text-lg font-semibold pt-5 pb-5">Loading...</p>;
   }
 
-  if (router && loaded && fid !== process.env.TARGET_FOLDER) {
+  if (router && loaded && fid !== process.env.NEXT_PUBLIC_TARGET_FOLDER) {
     return (
       <h2 className="text-2xl font-semibold flex flex-row items-center gap-8 pb-5">
         <BackButton />
