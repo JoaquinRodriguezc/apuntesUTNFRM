@@ -8,11 +8,20 @@ import Footer from "./../components/common/Footer";
 
 export default function Home() {
   return (
-    <div className="flex items-center flex-col h-screen w-full gap-8">
-      <main className="">
+    <div className="flex justify-center items-center flex-col h-screen w-screen">
+      <Head>
+        <title>ApuntesUTN</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <main className="h-full gap-8">
+        <HeaderImage />
+        <Title page="index" />
         <GoogleDriveSearch />
         <PlayBookFolders />
       </main>
+
+      <Footer />
     </div>
   );
 }

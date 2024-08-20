@@ -1,6 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { drive } from "../../../../utils/drive";
 import { drive_v3 } from "googleapis";
+import { unstable_cache } from "next/cache";
+
 //GET - FILES IN A FOLDER GET API/FOLDER/[fid]/FILES
 // TODO: CHECK REQ.METHOD
 export default async function handler(
@@ -13,7 +15,7 @@ export default async function handler(
       : (process.env.NEXT_PUBLIC_TARGET_FOLDER as string);
   const query = req.query.query;
   if (query) {
-    const folders = await getFolderParents(fid);
+    const folders = await getFolders(fid);
     const data: drive_v3.Schema$FileList = (
       await drive.files.list({
         q: `mimeType!='application/vnd.google-apps.folder' and trashed = false and parents in '${folders.join(
@@ -31,7 +33,7 @@ export default async function handler(
     return res.status(200).json(data);
   }
 }
-async function getFolderParents(fid: string): Promise<string[]> {
+export async function getFolderParents(fid: string): Promise<string[]> {
   const targetFolderId = process.env.NEXT_PUBLIC_TARGET_FOLDER!;
   let folderIds = [targetFolderId];
   async function getFolderId(fid: string) {
@@ -50,6 +52,13 @@ async function getFolderParents(fid: string): Promise<string[]> {
     }
   }
   await getFolderId(fid);
-  console.log(folderIds);
   return folderIds;
 }
+// CACHE
+const getFolders = unstable_cache(
+  async (fid) => getFolderParents(fid),
+  ["parents"],
+  {
+    revalidate: 120,
+  }
+);
