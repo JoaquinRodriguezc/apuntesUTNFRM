@@ -88,8 +88,8 @@ const SearchGoogleDrive = () => {
   };
   
   return (
-    <div className="w-full h-max pt-5 pb-5">
-      <div className="w-full flex justify-between">
+    <div className="w-full flex flex-col justify-center items-center h-max pt-5 pb-5">
+      <div className="w-[800px] flex items-center justify-evenly">
         <input
           type="text"
           value={query}

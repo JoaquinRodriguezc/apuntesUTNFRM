@@ -5,7 +5,7 @@ const Title = ({ page }) => {
   return page == pageValue ? (
     <div className="flex justify-center items-center flex-col h-1/6 gap-8">
       <h1 className="text-3xl font-bold">📖 APUNTES UTN 📖</h1>
-      <p className="text-lg font-semibold">
+      <p className="text-lg font-semibold w-2/3">
         Aca podes buscar carpetas de apuntes, archivos específicos y demas documentos con temas de estudio
       </p>
     </div>
