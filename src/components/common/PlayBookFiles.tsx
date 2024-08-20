@@ -39,7 +39,7 @@ const PlayBookFiles = () => {
   return (
     fid !== process.env.TARGET_FOLDER && (
       <div className="w-full flex flex-col justify-start items-center pt-5">
-        {loading && <div style={{ display: "none" }}>Loading...</div>}
+        {loading && <p className="text-lg font-semibold pt-5">Loading...</p>}
         {error && <div>{error.message}</div>}
         <ul
           className="w-full text-left"
