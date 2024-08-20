@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import IconUpLevel from "./IconUpLevel";
-import { NextApiResponse } from "next";
 
 const BackButton = () => {
   const router = useRouter();
   const fid = router.query.fid;
   const [fparent, setFParent] = useState("");
-  const accessToken = localStorage.getItem("access_token");
 
   useEffect(() => {
     const fetchData = async () => {
