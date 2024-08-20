@@ -42,11 +42,10 @@ const PlayBookFiles = () => {
         {loading && <div style={{ display: "none" }}>Loading...</div>}
         {error && <div>{error.message}</div>}
         <ul
-          className="bg-slate-800 p-5 rounded-md"
-          style={{ width: "100%", textAlign: "left" }}
+          className="w-full text-left"
         >
           {results.map((result) => (
-            <li key={result.id} className="text-white font-semibold text-md">
+            <li key={result.id} className="text-white font-semibold text-md bg-slate-800 p-5 rounded-md">
               <a
                 href={`https://docs.google.com/document/d/${result.id}/edit`}
                 data-file-id={result.id}
