@@ -4,13 +4,14 @@ import handleAccessTokenExpiration from "../googleDrive/HandleAccessTokenExpirat
 import handleGoogleDriveShortcutLink from "../googleDrive/HandleGoogleDriveShortcutLink";
 import Image from "next/image";
 import Document from "../../../public/document.png";
+import { drive_v3 } from "googleapis";
 
 const PlayBookFiles = () => {
   const router = useRouter();
   const fid = router.query.fid;
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<drive_v3.Schema$File[] | []>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<any>(null);
 
   useEffect(() => {
     const getFiles = async () => {
@@ -22,9 +23,9 @@ const PlayBookFiles = () => {
         const res = await fetch(
           `http://localhost:3000/api/folders/${fid}/files`
         );
-        const data = await res.json();
-        setResults(data.files);
-      } catch (err) {
+        const data: drive_v3.Schema$File[] = (await res.json()).files;
+        setResults(data);
+      } catch (err: any) {
         if (err.response && err.response.status === 401) {
           handleAccessTokenExpiration();
         } else {

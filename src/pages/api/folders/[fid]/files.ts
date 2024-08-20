@@ -7,9 +7,9 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const fid = req.query?.fid
+  const fid = req.query.fid
     ? (req.query.fid as string)
-    : process.env.NEXT_PUBLIC_TARGET_FOLDER;
+    : (process.env.NEXT_PUBLIC_TARGET_FOLDER as string);
   const query = req.query.query;
   if (query) {
     const folders = await getFolderParents(fid);
@@ -31,7 +31,7 @@ export default async function handler(
   }
 }
 async function getFolderParents(fid: string): Promise<string[]> {
-  const targetFolderId = process.env.NEXT_PUBLIC_TARGET_FOLDER;
+  const targetFolderId = process.env.NEXT_PUBLIC_TARGET_FOLDER!;
   let folderIds = [targetFolderId];
   async function getFolderId(fid: string) {
     if (fid === "undefined") {
@@ -44,8 +44,8 @@ async function getFolderParents(fid: string): Promise<string[]> {
     ).data;
     const subFolders = response.files || [];
     for (const folder of subFolders) {
-      folderIds.push(folder.id);
-      await getFolderId(folder.id);
+      folderIds.push(folder.id!);
+      await getFolderId(folder.id!);
     }
   }
   await getFolderId(fid);

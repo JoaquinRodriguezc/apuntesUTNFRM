@@ -2,34 +2,38 @@ import React, { useState, useEffect } from "react";
 import handleAccessTokenExpiration from "./HandleAccessTokenExpiration";
 import handleGoogleDriveShortcutLink from "./HandleGoogleDriveShortcutLink";
 import { useRouter } from "next/router";
+import { drive_v3 } from "googleapis";
 
 function SearchGoogleDrive() {
   const [query, setQuery] = useState<string>("");
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<drive_v3.Schema$File[] | []>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<any>(null);
   const router = useRouter();
   const fid = router.query.fid;
-  const handleClickOutside = (event) => {
-    if (
-      !event.target.className ||
-      typeof event.target.className.includes != "function"
-    ) {
-      return;
-    }
-    // Verifica si el clic fue fuera de los elementos deseados (ajusta según sea necesario)
-    // Si la lógica anterior ya no aplica, puedes cambiarla o simplificarla
-    if (!event.target.className.includes("some-other-class")) {
-      setResults([]);
-    }
-  };
+  // const handleClickOutside = (event:MouseEvent) => {
+  //   if (
+  //     !event.target.className ||
+  //     typeof event.target.className.includes != "function"
+  //   ) {
+  //     return;
+  //   }
+  //   // Verifica si el clic fue fuera de los elementos deseados (ajusta según sea necesario)
+  //   // Si la lógica anterior ya no aplica, puedes cambiarla o simplificarla
+  //   if (!event.target.className.includes("some-other-class")) {
+  //     setResults([]);
+  //   }
+  // };
 
+  // useEffect(() => {
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, []);
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+    setResults([]);
+  }, [router.asPath]);
 
   async function searchFiles() {
     setLoading(true);
@@ -40,10 +44,9 @@ function SearchGoogleDrive() {
       const res = await fetch(
         `http://localhost:3000/api/folders/${fid}/files?query=${query}`
       );
-      const data = await res.json();
-      console.log(data);
-      setResults(data.files || []);
-    } catch (err) {
+      const data: drive_v3.Schema$File[] = (await res.json()).files;
+      setResults(data || []);
+    } catch (err: any) {
       if (err.response && err.response.status === 401) {
         handleAccessTokenExpiration();
       } else {
