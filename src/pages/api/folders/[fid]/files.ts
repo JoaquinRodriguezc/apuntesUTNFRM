@@ -7,9 +7,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const fid = req.query.fid
-    ? (req.query.fid as string)
-    : (process.env.NEXT_PUBLIC_TARGET_FOLDER as string);
+  const fid =
+    req.query.fid !== "undefined"
+      ? (req.query.fid as string)
+      : (process.env.NEXT_PUBLIC_TARGET_FOLDER as string);
   const query = req.query.query;
   if (query) {
     const folders = await getFolderParents(fid);
