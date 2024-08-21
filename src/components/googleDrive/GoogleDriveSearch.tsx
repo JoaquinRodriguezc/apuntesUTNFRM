@@ -11,7 +11,6 @@ function SearchGoogleDrive() {
   const [results, setResults] = useState<drive_v3.Schema$File[] | []>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<any>(null);
-  const [toggleSearch, setToggleSearch] = useState(false)
   const router = useRouter();
   const fid = router.query.fid;
   // const handleClickOutside = (event:MouseEvent) => {
@@ -42,7 +41,6 @@ function SearchGoogleDrive() {
     setLoading(true);
     setError(null);
     setResults([]);
-    setToggleSearch(true)
 
     try {
       const res = await fetch(
