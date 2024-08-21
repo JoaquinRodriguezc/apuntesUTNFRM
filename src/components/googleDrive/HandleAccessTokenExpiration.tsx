@@ -2,8 +2,8 @@ import axios from "axios";
 
 const handleAccessTokenExpiration = async () => {
   const refreshToken = localStorage.getItem("refresh_token");
-  const clientId = config.api.client_id;
-  const clientSecret = config.api.client_secret;
+  const clientId = process.env.client_id;
+  const clientSecret = process.env.client_secret;
 
   try {
     const response = await axios.post("https://oauth2.googleapis.com/token", {

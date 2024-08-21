@@ -1,10 +1,10 @@
 import Head from "next/head";
 import React from "react";
-import HeaderImage from "../components/common/HeaderImage";
 import GoogleDriveSearch from "../components/googleDrive/GoogleDriveSearch";
 import PlayBookFolders from "../components/common/PlayBookFolders";
-import Title from "../components/common/Title";
 import Footer from "../components/common/Footer";
+import SimpleSignOn from "../components/googleDrive/singon";
+import UploadFileButton from "../components/common/UploadFileButton";
 
 export default function Home() {
   return (
@@ -16,8 +16,9 @@ export default function Home() {
       <main className="h-full gap-8">
         <GoogleDriveSearch />
         <PlayBookFolders />
+        <SimpleSignOn />
+        <UploadFileButton />
       </main>
-      <Footer />
     </div>
   );
 }

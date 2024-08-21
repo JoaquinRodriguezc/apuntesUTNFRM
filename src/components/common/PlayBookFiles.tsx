@@ -56,7 +56,7 @@ const PlayBookFiles = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-mime-type={result.mimeType}
-                onClick={handleGoogleDriveShortcutLink}
+                //  onClick={handleGoogleDriveShortcutLink}
                 className="flex flex-row items-center gap-5"
               >
                 <Image

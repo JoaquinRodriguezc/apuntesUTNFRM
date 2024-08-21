@@ -11,8 +11,6 @@ const handleGoogleDriveShortcutLink = async (event: any) => {
   if (mimeType === "application/vnd.google-apps.shortcut") {
     event.preventDefault();
 
-    const accessToken = localStorage.getItem("access_token");
-
     try {
       const res = await axios.get(
         `https://www.googleapis.com/drive/v3/files/${fileId}`,
