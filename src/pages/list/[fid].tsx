@@ -5,12 +5,17 @@ import PlayBookFiles from "../../components/common/PlayBookFiles";
 import FolderName from "../../components/common/FolderName";
 
 export default function Drilldown({ toggleSearch }: { toggleSearch: boolean }) {
-  const [changeMenu, setChangeMenu] = useState(false);
+  /* const [changeMenu, setChangeMenu] = useState(false); */
 
-  function name() {
+/*   function name() {
     setChangeMenu(!changeMenu);
     console.log(changeMenu);
-  }
+  } */
+
+    var changeMenu = true //toggleSearch para que si hago un abusqueda cambie de vista abajo al otro menu NO se como actualizar la prop cuando cambia de estado en el otro componente se me ocurre redux pero es un re viaje para un menu choto
+
+    console.log(changeMenu);
+    
 
   return (
     <div>
@@ -21,7 +26,7 @@ export default function Drilldown({ toggleSearch }: { toggleSearch: boolean }) {
             <FolderName />
             <PlayBookFolders />
             <PlayBookFiles />
-            <button onClick={name}>click</button>
+            {/* <button onClick={name}>click</button> */}
           </main>
         </div>
       ) : (
@@ -32,9 +37,9 @@ export default function Drilldown({ toggleSearch }: { toggleSearch: boolean }) {
               <FolderName />
               <PlayBookFolders />
               <PlayBookFiles />
-              <button onClick={name} className="bg-red-600 h-full">
+              {/* <button onClick={name} className="bg-red-600 h-full">
                 click
-              </button>
+              </button> */}
             </div>
           </main>
         </div>
