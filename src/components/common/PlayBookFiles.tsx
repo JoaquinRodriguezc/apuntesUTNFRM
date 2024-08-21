@@ -48,7 +48,7 @@ const PlayBookFiles = () => {
           {results.map((result) => (
             <li
               key={result.id}
-              className=" text-white font-bold text-lg bg-slate-800 p-5 rounded-md my-3"
+              className=" text-white font-bold text-lg bg-teal-900 p-5 rounded-md my-3"
             >
               <a
                 href={`https://docs.google.com/document/d/${result.id}/edit`}

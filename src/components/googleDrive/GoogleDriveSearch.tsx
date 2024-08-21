@@ -3,12 +3,15 @@ import handleAccessTokenExpiration from "./HandleAccessTokenExpiration";
 import handleGoogleDriveShortcutLink from "./HandleGoogleDriveShortcutLink";
 import { useRouter } from "next/router";
 import { drive_v3 } from "googleapis";
+import Image from "next/image";
+import Document from "../../../public/document.png"
 
 function SearchGoogleDrive() {
   const [query, setQuery] = useState<string>("");
   const [results, setResults] = useState<drive_v3.Schema$File[] | []>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<any>(null);
+  const [toggleSearch, setToggleSearch] = useState(false)
   const router = useRouter();
   const fid = router.query.fid;
   // const handleClickOutside = (event:MouseEvent) => {
@@ -39,6 +42,7 @@ function SearchGoogleDrive() {
     setLoading(true);
     setError(null);
     setResults([]);
+    setToggleSearch(true)
 
     try {
       const res = await fetch(
@@ -76,31 +80,39 @@ function SearchGoogleDrive() {
         />
         <button
           onClick={searchFiles}
-          className="w-2/12 bg-slate-700 rounded-md p-4 hover:bg-slate-500"
+          className="w-2/12 bg-sky-900 rounded-md p-4 hover:bg-sky-800 duration-100 text-white font-semibold"
         >
-          Search
+          Buscar
         </button>
       </div>
 
       {loading && <p className="text-lg font-semibold pt-5">Loading...</p>}
       {error && <div>{error.message}</div>}
-      <ul className="w-full text-left pt-2">
-        {(results || []).map((result) => (
-          <li key={result.id} className="pt-3 pb-3">
-            <a
-              href={`https://docs.google.com/document/d/${result.id}/edit`}
-              data-file-id={result.id}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-semibold text-lg p-2 rounded-md bg-sky-600 hover:bg-sky-400"
-              data-mime-type={result.mimeType}
-              onClick={handleGoogleDriveShortcutLink}
+      <ul className="w-full text-left">
+          {results.map((result) => (
+            <li
+              key={result.id}
+              className=" text-white font-bold text-lg bg-teal-900 p-5 rounded-md my-3"
             >
-              {result.name}
-            </a>
-          </li>
-        ))}
-      </ul>
+              <a
+                href={`https://docs.google.com/document/d/${result.id}/edit`}
+                data-file-id={result.id}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-mime-type={result.mimeType}
+                onClick={handleGoogleDriveShortcutLink}
+                className="flex flex-row items-center gap-5"
+              >
+                <Image
+                  src={Document}
+                  alt="Picture of the author"
+                  className="h-1/6 w-1/12"
+                />
+                {result.name}
+              </a>
+            </li>
+          ))}
+        </ul>
     </div>
   );
 }
