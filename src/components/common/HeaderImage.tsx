@@ -14,7 +14,7 @@ const HeaderImage = () => {
         <Image
           src={Logo}
           alt="Picture of the author"
-          className=" h-40 w-28 py-5"
+          className="h-32 w-28"
         />
       </Link>
       <Title />

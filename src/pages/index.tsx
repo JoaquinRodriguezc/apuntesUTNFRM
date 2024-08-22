@@ -1,6 +1,9 @@
 import React from "react";
 import GoogleDriveSearch from "../components/googleDrive/GoogleDriveSearch";
 import PlayBookFolders from "../components/common/PlayBookFolders";
+import SimpleSignOn from "../components/googleDrive/singon";
+import UploadFileButton from "../components/common/UploadFileButton";
+
 
 export default function Home() {
   return (
@@ -8,6 +11,8 @@ export default function Home() {
       <main className="h-min gap-8">
         <GoogleDriveSearch />
         <PlayBookFolders />
+        <SimpleSignOn />
+        <UploadFileButton />
       </main>
     </div>
   );

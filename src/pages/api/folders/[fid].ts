@@ -7,16 +7,20 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  const fid =
+    req.query.fid !== "undefined"
+      ? (req.query.fid as string)
+      : process.env.NEXT_PUBLIC_TARGET_FOLDER;
   if (req.query.search as string) {
     const response: any = await drive.files.get({
-      fileId: req.query.fid as string,
+      fileId: fid,
       fields: "parents",
     });
     return res.status(200).json(response);
   }
   const data: any = (
     await drive.files.get({
-      fileId: req.query.fid as string,
+      fileId: fid,
     })
   ).data;
   return res.status(200).json(data);
