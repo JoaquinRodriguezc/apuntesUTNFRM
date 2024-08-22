@@ -48,7 +48,7 @@ const PlayBookFiles = () => {
           {results.map((result) => (
             <li
               key={result.id}
-              className="p-5 rounded-md bg-500 hover:bg-700 duration-500 font-semibold text-xl"
+              className="p-5 h-10 flex flex-row rounded-md bg-500 hover:bg-700 duration-500 font-semibold text-lg"
             >
               <a
                 href={`https://docs.google.com/document/d/${result.id}/edit`}
@@ -57,12 +57,12 @@ const PlayBookFiles = () => {
                 rel="noopener noreferrer"
                 data-mime-type={result.mimeType}
                 //  onClick={handleGoogleDriveShortcutLink}
-                className="flex flex-row items-center gap-5"
+                className="flex flex-row items-center gap-2"
               >
                 <Image
                   src={Document}
                   alt="Picture of the author"
-                  className="h-1/6 w-1/12"
+                  className="h-5 w-6"
                 />
                 {result.name}
               </a>

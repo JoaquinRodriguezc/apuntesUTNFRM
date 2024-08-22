@@ -4,7 +4,7 @@ import handleGoogleDriveShortcutLink from "./HandleGoogleDriveShortcutLink";
 import { useRouter } from "next/router";
 import { drive_v3 } from "googleapis";
 import Image from "next/image";
-import Document from "../../../public/document.png"
+import Document from "../../../public/document.png";
 
 function SearchGoogleDrive() {
   const [query, setQuery] = useState<string>("");
@@ -78,7 +78,7 @@ function SearchGoogleDrive() {
         />
         <button
           onClick={searchFiles}
-          className="w-2/12 p-4 rounded-md bg-800 hover:bg-600 duration-200 font-semibold"
+          className="w-2/12 p-4 text-white rounded-md bg-800 hover:bg-600 duration-200 font-semibold"
         >
           Buscar
         </button>
@@ -86,32 +86,32 @@ function SearchGoogleDrive() {
 
       {loading && <p className="text-lg font-semibold pt-5">Loading...</p>}
       {error && <div>{error.message}</div>}
-      
+
       <ul className="w-full flex flex-col gap-5">
-          {results.map((result) => (
-            <li
-              key={result.id}
-              className="p-5 rounded-md bg-500 hover:bg-700 duration-500 font-semibold text-xl"
+        {results.map((result) => (
+          <li
+            key={result.id}
+            className="p-5 rounded-md bg-500 hover:bg-700 duration-500 font-semibold text-xl"
+          >
+            <a
+              href={`https://docs.google.com/document/d/${result.id}/edit`}
+              data-file-id={result.id}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-mime-type={result.mimeType}
+              onClick={handleGoogleDriveShortcutLink}
+              className="flex flex-row items-center gap-5"
             >
-              <a
-                href={`https://docs.google.com/document/d/${result.id}/edit`}
-                data-file-id={result.id}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-mime-type={result.mimeType}
-                onClick={handleGoogleDriveShortcutLink}
-                className="flex flex-row items-center gap-5"
-              >
-                <Image
-                  src={Document}
-                  alt="Picture of the author"
-                  className="h-1/6 w-1/12"
-                />
-                {result.name}
-              </a>
-            </li>
-          ))}
-        </ul>
+              <Image
+                src={Document}
+                alt="Picture of the author"
+                className="h-1/6 w-1/12"
+              />
+              {result.name}
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
