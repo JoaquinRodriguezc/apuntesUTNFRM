@@ -54,9 +54,9 @@ const SimpleSignOn = () => {
   };
 
   return (
-    <div>
+    <div className="absolute top-5 right-5">
       {error && <div>An error occurred: {error.message}</div>}
-      <button onClick={handleSignOn}>Sign On with Google</button>
+      <button className="bg-50 rounded-full px-3 py-2 text-black font-medium hover:scale-105 duration-100" onClick={handleSignOn}>Sign On with Google</button>
     </div>
   );
 };

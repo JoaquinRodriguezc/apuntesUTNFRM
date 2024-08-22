@@ -8,7 +8,7 @@ import UploadFileButton from "../components/common/UploadFileButton";
 export default function Home() {
   return (
     <div className="flex justify-center items-center flex-col h-min w-full">
-      <main className="h-min gap-8">
+      <main className="h-min flex flex-col gap-5">
         <GoogleDriveSearch />
         <PlayBookFolders />
         <SimpleSignOn />

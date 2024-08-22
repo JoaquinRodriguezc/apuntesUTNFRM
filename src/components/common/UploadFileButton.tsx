@@ -39,5 +39,5 @@ export default function UploadFileButton() {
       console.log(e);
     }
   }
-  return <input type="file" onChange={(e) => handleUploadFile(e)} />;
+  return <input type="file" className="font-medium" onChange={(e) => handleUploadFile(e)} />;
 }

@@ -34,7 +34,7 @@ const BackButton = () => {
       key={fparent}
     >
       <button
-        className="h-10 w-8 hover:scale-110"
+        className="h-min w-8 hover:scale-110 duration-200"
         onClick={() => {
           const container = document.querySelector(".searchContainer");
           if (typeof container != "undefined" && container) {

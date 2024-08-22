@@ -40,9 +40,9 @@ const PlayBookFolders = () => {
 
   return (
     <div className="w-full">
-      {loading && <div style={{ display: "none" }}>Loading...</div>}
+      {loading && <p className="text-lg font-semibold pt-5">Loading...</p>}
       {error && <div>{error.message}</div>}
-      <div className="w-full flex flex-col items-start gap-3">
+      <div className="w-full flex flex-col gap-5">
         {results.map((result) => (
           <Link
             href={{
@@ -56,7 +56,7 @@ const PlayBookFolders = () => {
             className="w-full"
           >
             <button
-              className="cursor-pointer flex justify-between items-center bg-gray-800 px-3 py-2 rounded-md text-white font-bold text-xl tracking-wider shadow-xl hover:bg-gray-900 hover:scale-105 duration-500 hover:ring-1 font-mono w-full"
+              className="w-full rounded-md px-3 py-2 flex justify-between items-center cursor-pointer bg-900 shadow-lg hover:shadow-950 hover:bg-950 hover:scale-105 duration-500 font-semibold text-2xl"
               onClick={() => {
                 const container = document.querySelector(".searchContainer");
                 if (container) {

@@ -6,7 +6,6 @@ import { NextApiResponse } from "next";
 const FolderName = () => {
   const router = useRouter();
   const fid = router.query.fid;
-
   const [fname, setFName] = useState("");
   const [loaded, setLoaded] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -28,12 +27,12 @@ const FolderName = () => {
   }, [fid, router]);
 
   if (loading) {
-    return <p className="text-lg font-semibold pt-5 pb-5">Loading...</p>;
+    return <p className="text-lg font-semibold">Loading...</p>;
   }
 
   if (router && loaded && fid !== process.env.NEXT_PUBLIC_TARGET_FOLDER) {
     return (
-      <h2 className="text-2xl font-semibold flex flex-row items-center gap-8 pb-5">
+      <h2 className="flex flex-row items-center gap-8 text-2xl font-semibold">
         <BackButton />
         {fname}
       </h2>

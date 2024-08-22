@@ -11,7 +11,7 @@ export default function Drilldown() {
   useEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
       for (let entry of entries) {
-        if (entry.contentRect.height > 300) {
+        if (entry.contentRect.height > 100) {
           setInSearch(true);
         } else {
           setInSearch(false);
@@ -28,11 +28,11 @@ export default function Drilldown() {
     <div>
       {inSearch ? (
       <div className="flex justify-center items-center w-full flex-row">
-      <main className="flex flex-row gap-8">
+      <main className="flex flex-row gap-5">
         <div ref={driveSearch}>
           <GoogleDriveSearch />
         </div>
-        <div>
+        <div className="flex flex-col gap-5">
           <FolderName />
           <PlayBookFolders />
           <PlayBookFiles />
@@ -41,11 +41,11 @@ export default function Drilldown() {
     </div>
     ) : (
       <div className="flex justify-center items-center w-full flex-col">
-      <main className="flex flex-col gap-4">
+      <main className="flex flex-col gap-5">
         <div ref={driveSearch}>
           <GoogleDriveSearch />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-5">
           <FolderName />
           <PlayBookFolders />
           <PlayBookFiles />

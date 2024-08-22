@@ -66,19 +66,19 @@ function SearchGoogleDrive() {
   };
 
   return (
-    <div className="w-full flex flex-col justify-center items-center h-max pt-5 pb-5">
-      <div className="w-[800px] flex items-center justify-evenly">
+    <div className="h-min w-[800px] flex flex-col justify-center items-center gap-5">
+      <div className="w-full flex items-center justify-between">
         <input
           type="text"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           onKeyDown={handleKeyPress}
-          className="w-9/12 rounded-md p-4"
+          className="w-9/12 p-4 rounded-md text-black"
           placeholder="Apuntes UTN MDZ"
         />
         <button
           onClick={searchFiles}
-          className="w-2/12 bg-sky-900 rounded-md p-4 hover:bg-sky-800 duration-100 text-white font-semibold"
+          className="w-2/12 p-4 rounded-md bg-800 hover:bg-600 duration-200 font-semibold"
         >
           Buscar
         </button>
@@ -86,11 +86,12 @@ function SearchGoogleDrive() {
 
       {loading && <p className="text-lg font-semibold pt-5">Loading...</p>}
       {error && <div>{error.message}</div>}
-      <ul className="w-full text-left">
+      
+      <ul className="w-full flex flex-col gap-5">
           {results.map((result) => (
             <li
               key={result.id}
-              className=" text-white font-bold text-lg bg-teal-900 p-5 rounded-md my-3"
+              className="p-5 rounded-md bg-500 hover:bg-700 duration-500 font-semibold text-xl"
             >
               <a
                 href={`https://docs.google.com/document/d/${result.id}/edit`}

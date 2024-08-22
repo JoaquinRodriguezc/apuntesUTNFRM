@@ -41,14 +41,14 @@ const PlayBookFiles = () => {
 
   return (
     fid !== process.env.NEXT_PUBLIC_TARGET_FOLDER && (
-      <div className="w-full flex flex-col justify-start items-center pt-5">
+      <div className="w-full flex flex-col justify-start items-center">
         {loading && <p className="text-lg font-semibold pt-5">Loading...</p>}
         {error && <div>{error.message}</div>}
-        <ul className="w-full text-left">
+        <ul className="w-full flex flex-col gap-5">
           {results.map((result) => (
             <li
               key={result.id}
-              className=" text-white font-bold text-lg bg-teal-900 p-5 rounded-md my-3"
+              className="p-5 rounded-md bg-500 hover:bg-700 duration-500 font-semibold text-xl"
             >
               <a
                 href={`https://docs.google.com/document/d/${result.id}/edit`}
