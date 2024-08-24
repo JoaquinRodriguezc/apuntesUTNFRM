@@ -1,37 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import IconUpLevel from "./IconUpLevel";
-import { NextApiResponse } from "next";
+import { useFetchData } from "./useFetchData";
 
-const BackButton = () => {
+export default function BackButton() {
   const router = useRouter();
   const fid = router.query.fid;
-  const [fparent, setFParent] = useState("");
-  const accessToken = localStorage.getItem("access_token");
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res: Response = await fetch(
-        `http://localhost:3000/api/folders/${fid}?search=parents`
-      );
-      const data = await res.json();
-      setFParent(data.data.parents[0]);
-    };
-    fetchData();
-  }, [fid]);
-
+  const { data, loading, error } = useFetchData(
+    `http://localhost:3000/api/folders/${fid}?search=parents`
+  );
+  if (!data) {
+    return;
+  }
   return (
     <Link
       href={{
         pathname: `/list/[fid]`,
         query: {
-          fid: fparent,
+          fid: data.data.parents[0],
           fname: "get me",
         },
       }}
-      as={`/list/${fparent}`}
-      key={fparent}
+      as={`/list/${data.data.parents[0]}`}
+      key={data.data.parents[0]}
     >
       <button
         className="h-min w-8 hover:scale-110 duration-200"
@@ -46,6 +38,4 @@ const BackButton = () => {
       </button>
     </Link>
   );
-};
-
-export default BackButton;
+}
