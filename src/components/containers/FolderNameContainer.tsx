@@ -7,8 +7,15 @@ export default function FolderNameContainer() {
   const { data, loading, error } = useFetchData(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/folders/${router.query.fid}`
   );
+  const backButtonRes = useFetchData(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/folders/${router.query.fid}?search=parents`
+  );
   if (loading || router.query.fid === process.env.NEXT_PUBLIC_TARGET_FOLDER) {
     return null;
   }
-  if (data) return <FolderName name={data.name} />;
+  if (data && backButtonRes.data?.parents) {
+    return (
+      <FolderName name={data.name} backButton={backButtonRes.data.parents} />
+    );
+  }
 }

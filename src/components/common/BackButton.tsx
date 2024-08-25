@@ -1,30 +1,19 @@
 import React from "react";
-import { useRouter } from "next/router";
 import Link from "next/link";
 import IconUpLevel from "./IconUpLevel";
-import { useFetchData } from "./useFetchData";
 
-export default function BackButton() {
-  const router = useRouter();
-  const fid = router.query.fid;
-  const { data, loading, error } = useFetchData(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/folders/${fid}?search=parents`
-  );
-  if (!data) {
-    return;
-  }
-
+export default function BackButton({ data }) {
   return (
     <Link
       href={{
         pathname: `/list/[fid]`,
         query: {
-          fid: data.data.parents[0],
+          fid: data[0],
           fname: "get me",
         },
       }}
-      as={`/list/${data.data.parents[0]}`}
-      key={data.data.parents[0]}
+      as={`/list/${data[0]}`}
+      key={data[0]}
     >
       <button
         className="h-min w-8 hover:scale-110 duration-200"

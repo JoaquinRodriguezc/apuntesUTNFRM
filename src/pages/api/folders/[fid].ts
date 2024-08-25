@@ -13,10 +13,12 @@ export default async function handler(
       : process.env.NEXT_PUBLIC_TARGET_FOLDER;
 
   if (req.query.search as string) {
-    const response: any = await drive.files.get({
-      fileId: fid,
-      fields: req.query.search as string,
-    });
+    const response: any = (
+      await drive.files.get({
+        fileId: fid,
+        fields: "name,id,parents",
+      })
+    ).data;
     return res.status(200).json(response);
   }
   const data: any = (
