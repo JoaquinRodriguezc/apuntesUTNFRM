@@ -5,11 +5,10 @@ import FolderName from "../common/FolderName";
 export default function FolderNameContainer() {
   const router = useRouter();
   const { data, loading, error } = useFetchData(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/folders/${router.query.fid}?search=parents`
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/folders/${router.query.fid}`
   );
   if (loading) {
     return null;
   }
-  if (data)
-    return <FolderName name={data.data.name} parent={data.data.parents[0]} />;
+  if (data) return <FolderName name={data.name} />;
 }

@@ -15,7 +15,7 @@ export default async function handler(
   if (req.query.search as string) {
     const response: any = await drive.files.get({
       fileId: fid,
-      fields: (req.query.search as string) + "," + "name",
+      fields: req.query.search as string,
     });
     return res.status(200).json(response);
   }

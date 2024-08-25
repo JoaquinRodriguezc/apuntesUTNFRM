@@ -16,6 +16,16 @@ export default function PlayBookFoldersContainer({
   if (files) {
     return <PlayBookFiles files={files} />;
   }
-
+  if (loading) {
+    return (
+      <ClipLoader
+        color="black"
+        loading={loading}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    );
+  }
   return <PlayBookFiles files={data?.files} />;
 }
