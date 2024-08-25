@@ -15,9 +15,12 @@ export default async function handler(
       : (process.env.NEXT_PUBLIC_TARGET_FOLDER as string);
   const query = req.query.query;
   if (query) {
+    console.log("Buscando", fid, query);
     const folders = await getFolders(fid);
+    console.log("A");
     const data: drive_v3.Schema$FileList = (
       await drive.files.list({
+        fields: "files/webViewLink,files/name,files/id,files/mimeType",
         q: `mimeType!='application/vnd.google-apps.folder' and trashed = false and parents in '${folders.join(
           "','"
         )}' and (name contains '${query}' or fullText contains '${query}')`,
@@ -27,9 +30,11 @@ export default async function handler(
   } else {
     const data: drive_v3.Schema$FileList = (
       await drive.files.list({
+        fields: "files/webViewLink,files/name,files/id,files/mimeType",
         q: `mimeType!='application/vnd.google-apps.folder' and trashed = false and parents in '${fid}'`,
       })
     ).data;
+    console.log(data);
     return res.status(200).json(data);
   }
 }
@@ -42,6 +47,7 @@ export async function getFolderParents(fid: string): Promise<string[]> {
     }
     const response: drive_v3.Schema$FileList = (
       await drive.files.list({
+        fields: "files/webViewLink,files/name,files/id,files/mimeType",
         q: `mimeType='application/vnd.google-apps.folder' and trashed = false and parents in '${fid}'`,
       })
     ).data;
@@ -54,11 +60,5 @@ export async function getFolderParents(fid: string): Promise<string[]> {
   await getFolderId(fid);
   return folderIds;
 }
-// CACHE
-const getFolders = unstable_cache(
-  async (fid) => getFolderParents(fid),
-  ["parents"],
-  {
-    revalidate: 120,
-  }
-);
+// CACHE NOT WORKING
+const getFolders = unstable_cache(async (fid) => getFolderParents(fid));

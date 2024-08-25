@@ -50,10 +50,13 @@ export default function SearchGoogleDrive({
           onKeyDown={handleKeyPress}
           className="w-9/12 p-4 rounded-md text-black"
           placeholder="Apuntes UTN MDZ"
+          disabled
         />
         <button
           onClick={searchFiles}
-          className="w-2/12 p-4 text-white rounded-md bg-800 hover:bg-600 duration-200 font-semibold"
+          //className="w-2/12 p-4 text-white rounded-md bg-800 hover:bg-600 duration-200 font-semibold"
+          className="w-2/12 p-4 text-white rounded-md bg-800"
+          disabled
         >
           Buscar
         </button>

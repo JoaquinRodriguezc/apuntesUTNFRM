@@ -15,7 +15,7 @@ export default function Drilldown() {
   return (
     <div className="flex justify-center items-center w-full flex-col">
       <main className="flex flex-col gap-5">
-        <div>
+        <div className="opacity-50">
           <GoogleDriveSearch setResults={setResults} />
         </div>
         {results.length === 0 ? (
@@ -25,7 +25,7 @@ export default function Drilldown() {
             <PlayBookFilesContainer />
           </div>
         ) : (
-          <h1>hola</h1>
+          <PlayBookFilesContainer files={results} />
         )}
       </main>
     </div>
