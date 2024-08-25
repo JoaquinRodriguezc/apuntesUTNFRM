@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import Logo from "../../../public/logo.png";
 import Title from "./Title";
+import { faBook, faFile } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const HeaderImage = () => {
   return (
@@ -11,11 +13,7 @@ const HeaderImage = () => {
         href={process.env.HOMEPAGE_URL ?? "/"}
         className="flex justify-center items-center"
       >
-        <Image
-          src={Logo}
-          alt="apuntes utn frm"
-          className="h-32 w-28"
-        />
+        <FontAwesomeIcon icon={faBook} className="h-24" />
       </Link>
       <Title />
     </div>
