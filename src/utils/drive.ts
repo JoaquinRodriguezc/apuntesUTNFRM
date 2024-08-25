@@ -5,8 +5,12 @@ class Drive {
     if (instance) {
       return instance;
     }
+
     const auth = new google.auth.GoogleAuth({
-      keyFile: "./secret.key.json",
+      credentials: {
+        private_key: process.env.GOOGLE_PRIVATE_KEY!.replace(/\\n/gm, "\n"),
+        client_email: process.env.GOOGLE_CLIENT_EMAIL,
+      },
       scopes: "https://www.googleapis.com/auth/drive",
     });
     const d = google.drive({
