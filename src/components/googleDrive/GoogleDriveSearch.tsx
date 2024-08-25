@@ -47,14 +47,14 @@ export default function SearchGoogleDrive({
         value={query}
         onChange={(event) => setQuery(event.target.value)}
         onKeyDown={handleKeyPress}
-        className="w-9/12 p-4 rounded-md border-2 border-solid border-black text-black"
+        className="w-full lg:w-9/12 p-4 rounded-md border-2 border-solid border-black text-black"
         placeholder="Apuntes UTN MDZ"
         disabled
       />
       <button
         onClick={searchFiles}
         //className="w-2/12 p-4 text-white rounded-md bg-800 hover:bg-600 duration-200 font-semibold"
-        className="w-2/12 p-4 text-white rounded-md bg-800"
+        className="w-full lg:w-2/12 p-4 text-white rounded-md bg-800"
         disabled
       >
         Buscar
