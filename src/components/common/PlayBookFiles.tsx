@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import { drive_v3 } from "googleapis";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFile,
+  faFileExcel,
   faFilePdf,
+  faFilePowerpoint,
+  faFileWord,
   faImage,
   IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
@@ -19,9 +21,25 @@ export default function PlayBookFiles({ files }: PlayBookFilesProps) {
     if (mime.split("/")[0] === "image") {
       return faImage;
     }
+    if (
+      mime ===
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+    ) {
+      return faFilePowerpoint;
+    }
+    if (
+      mime ===
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+      "application/vnd.google-apps.document"
+    ) {
+      return faFileWord;
+    }
+    if (mime === "application/vnd.google-apps.spreadsheet") {
+      return faFileExcel;
+    }
+
     return faFile;
   }
-  console.log(files);
   return (
     <div className="w-full flex flex-col justify-start items-center my-10">
       <ul className="w-full flex flex-col gap-5 justify-center items-center">
