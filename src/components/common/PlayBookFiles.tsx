@@ -23,13 +23,13 @@ export default function PlayBookFiles({ files }: PlayBookFilesProps) {
   }
   console.log(files);
   return (
-    <div className="w-full flex flex-col justify-start items-center">
-      <ul className="w-full flex flex-col gap-5">
+    <div className="w-full flex flex-col justify-start items-center my-10">
+      <ul className="w-full flex flex-col gap-5 justify-center items-center">
         {files &&
           files.map((result) => (
             <li
               key={result.id}
-              className="p-5 h-14 flex text-white flex-row rounded-md bg-[#6e6e6e]  duration-500 font-semibold text-lg"
+              className="p-5 h-14 w-full flex text-white flex-row rounded-md bg-[#6e6e6e]  duration-500 font-semibold text-lg"
             >
               <a
                 href={result.webViewLink as string}
