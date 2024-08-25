@@ -48,7 +48,7 @@ export default function SearchGoogleDrive({
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           onKeyDown={handleKeyPress}
-          className="w-9/12 p-4 rounded-md text-black"
+          className="w-9/12 p-4 rounded-md border-2 border-solid border-black text-black"
           placeholder="Apuntes UTN MDZ"
         />
         <button
