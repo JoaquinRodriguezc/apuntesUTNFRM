@@ -15,6 +15,7 @@ export default function Drilldown() {
   return (
     <div className="flex  m-auto items-center w-[90%] lg:w-1/2 justify-center flex-col">
       <GoogleDriveSearch setResults={setResults} />
+      <FolderNameContainer />
       <PlayBookFoldersContainer />
       <PlayBookFilesContainer />
     </div>

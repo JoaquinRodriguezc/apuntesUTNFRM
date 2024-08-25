@@ -13,6 +13,7 @@ export default function BackButton() {
   if (!data) {
     return;
   }
+
   return (
     <Link
       href={{
