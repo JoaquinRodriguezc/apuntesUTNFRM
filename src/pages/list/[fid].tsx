@@ -13,22 +13,10 @@ export default function Drilldown() {
   const isRootFolder =
     router.query.fid === process.env.NEXT_PUBLIC_TARGET_FOLDER;
   return (
-    <div className="flex justify-center items-center w-full flex-col">
-      <main className="flex flex-col gap-5">
-        <div className="relative">
-          <GoogleDriveSearch setResults={setResults} />
-        </div>
-
-        {results.length === 0 ? (
-          <div className="flex flex-col gap-5 items-center">
-            {!isRootFolder && <FolderNameContainer />}
-            <PlayBookFoldersContainer />
-            <PlayBookFilesContainer />
-          </div>
-        ) : (
-          <PlayBookFilesContainer files={results} />
-        )}
-      </main>
+    <div className="flex  m-auto items-center w-1/2 justify-center flex-col">
+      <GoogleDriveSearch setResults={setResults} />
+      <PlayBookFoldersContainer />
+      <PlayBookFilesContainer />
     </div>
   );
 }
