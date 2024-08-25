@@ -2,6 +2,7 @@ import { useFetchData } from "../common/useFetchData";
 import { useRouter } from "next/router";
 import PlayBookFiles from "../common/PlayBookFiles";
 import { drive_v3 } from "googleapis";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function PlayBookFoldersContainer({
   files,
@@ -14,6 +15,17 @@ export default function PlayBookFoldersContainer({
   );
   if (files) {
     return <PlayBookFiles files={files} />;
+  }
+  if (loading) {
+    return (
+      <ClipLoader
+        color="black"
+        loading={loading}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    );
   }
   return <PlayBookFiles files={data?.files} />;
 }

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import Document from "../../../public/document.png";
 import { drive_v3 } from "googleapis";
-import handleGoogleDriveShortcutLink from "../googleDrive/HandleGoogleDriveShortcutLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFile,

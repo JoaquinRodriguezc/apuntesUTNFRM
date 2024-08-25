@@ -8,6 +8,7 @@ export function useFetchData(url: string) {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setData(null);
         setLoading(true);
         let res: Response;
         res = await fetch(url);

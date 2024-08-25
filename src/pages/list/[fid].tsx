@@ -20,7 +20,7 @@ export default function Drilldown() {
         </div>
 
         {results.length === 0 ? (
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-5 items-center">
             {!isRootFolder && <FolderNameContainer />}
             <PlayBookFoldersContainer />
             <PlayBookFilesContainer />
