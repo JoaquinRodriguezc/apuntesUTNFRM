@@ -22,7 +22,7 @@ export default function SearchGoogleDrive({
     setResults([]);
     try {
       const res = await fetch(
-        `http://localhost:3000/api/folders/${fid}/files?query=${query}`
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/folders/${fid}/files?query=${query}`
       );
       const data: drive_v3.Schema$File[] = (await res.json()).files;
       setResults(data || []);

@@ -8,7 +8,7 @@ export default function BackButton() {
   const router = useRouter();
   const fid = router.query.fid;
   const { data, loading, error } = useFetchData(
-    `http://localhost:3000/api/folders/${fid}?search=parents`
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/folders/${fid}?search=parents`
   );
   if (!data) {
     return;

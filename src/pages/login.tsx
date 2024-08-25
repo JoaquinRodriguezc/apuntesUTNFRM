@@ -23,7 +23,7 @@ async function handleRedirect(code: string, currentURL = "") {
   try {
     code = btoa(code);
     const res = await fetch(
-      `http://localhost:3000/api/auth?code=${code}&url=${currentURL}`
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth?code=${code}&url=${currentURL}`
     );
     const data = await res.json();
     console.log(data);

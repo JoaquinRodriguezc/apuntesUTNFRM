@@ -10,7 +10,7 @@ const HeaderImage = () => {
   return (
     <div className="h-min flex flex-col gap-5">
       <Link
-        href={process.env.HOMEPAGE_URL ?? "/"}
+        href={process.env.NEXT_PUBLIC_BASE_URL ?? "/"}
         className="flex justify-center items-center"
       >
         <FontAwesomeIcon icon={faBook} className="h-24" />

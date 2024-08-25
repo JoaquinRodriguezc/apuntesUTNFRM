@@ -10,7 +10,7 @@ export default function PlayBookFoldersContainer({
 }) {
   const router = useRouter();
   const { data, loading, error } = useFetchData(
-    `http://localhost:3000/api/folders/${router.query.fid}/files`
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/folders/${router.query.fid}/files`
   );
   if (files) {
     return <PlayBookFiles files={files} />;
