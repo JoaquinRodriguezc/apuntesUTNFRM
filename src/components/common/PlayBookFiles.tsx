@@ -31,7 +31,7 @@ export default function PlayBookFiles({ files }: PlayBookFilesProps) {
           files.map((result) => (
             <li
               key={result.id}
-              className="p-5 h-14 flex text-white flex-row rounded-md bg-[#6e6e6e] hover:bg-700 duration-500 font-semibold text-lg"
+              className="p-5 h-14 flex text-white flex-row rounded-md bg-[#6e6e6e]  duration-500 font-semibold text-lg"
             >
               <a
                 href={result.webViewLink as string}

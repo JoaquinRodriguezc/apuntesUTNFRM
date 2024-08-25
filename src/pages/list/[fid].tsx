@@ -15,9 +15,10 @@ export default function Drilldown() {
   return (
     <div className="flex justify-center items-center w-full flex-col">
       <main className="flex flex-col gap-5">
-        {/* <div className="opacity-50">
+        <div className="relative">
           <GoogleDriveSearch setResults={setResults} />
-        </div> */}
+        </div>
+
         {results.length === 0 ? (
           <div className="flex flex-col gap-5">
             {!isRootFolder && <FolderNameContainer />}
