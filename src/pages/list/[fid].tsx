@@ -13,7 +13,7 @@ export default function Drilldown() {
   const isRootFolder =
     router.query.fid === process.env.NEXT_PUBLIC_TARGET_FOLDER;
   return (
-    <div className="flex  m-auto items-center w-1/2 justify-center flex-col">
+    <div className="flex  m-auto items-center w-[90%] lg:w-1/2 justify-center flex-col">
       <GoogleDriveSearch setResults={setResults} />
       <PlayBookFoldersContainer />
       <PlayBookFilesContainer />
