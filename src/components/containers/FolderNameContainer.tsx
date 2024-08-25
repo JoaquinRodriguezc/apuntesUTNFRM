@@ -15,7 +15,7 @@ export default function FolderNameContainer() {
   }
   if (data && backButtonRes.data?.parents) {
     return (
-      <FolderName name={data.name} backButton={backButtonRes.data.parents} />
+      <FolderName name={data.name} backButton={backButtonRes.data.parents[0]} />
     );
   }
 }

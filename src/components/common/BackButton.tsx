@@ -2,18 +2,18 @@ import React from "react";
 import Link from "next/link";
 import IconUpLevel from "./IconUpLevel";
 
-export default function BackButton({ data }) {
+export default function BackButton({ data }: { data: string }) {
   return (
     <Link
       href={{
         pathname: `/list/[fid]`,
         query: {
-          fid: data[0],
+          fid: data,
           fname: "get me",
         },
       }}
-      as={`/list/${data[0]}`}
-      key={data[0]}
+      as={`/list/${data}`}
+      key={data}
     >
       <button
         className="h-min w-8 hover:scale-110 duration-200"
