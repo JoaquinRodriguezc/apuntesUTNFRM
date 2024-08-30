@@ -22,7 +22,7 @@ module.exports = {
         permanent: true,
       },
       {
-        source: "/electromecánica",
+        source: "/electromecanica",
         destination: `/${process.env.NEXT_ELECTROMECANICA_FOLDER}`,
         permanent: true,
       },
