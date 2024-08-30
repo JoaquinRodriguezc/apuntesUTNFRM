@@ -13,11 +13,13 @@ export default function Drilldown() {
   let fid = router.query.fid as string;
   console.log(fid);
   return (
-    <div className="flex  m-auto items-center w-[90%] lg:w-1/2 justify-center flex-col">
-      <GoogleDriveSearch setResults={setResults} />
-      <FolderNameContainer fid={fid} />
-      <PlayBookFoldersContainer fid={fid} />
-      <PlayBookFilesContainer fid={fid} />
-    </div>
+    fid && (
+      <div className="flex  m-auto items-center w-[90%] lg:w-1/2 justify-center flex-col">
+        <GoogleDriveSearch setResults={setResults} />
+        <FolderNameContainer fid={fid} />
+        <PlayBookFoldersContainer fid={fid} />
+        <PlayBookFilesContainer fid={fid} />
+      </div>
+    )
   );
 }
