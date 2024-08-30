@@ -2,6 +2,11 @@ module.exports = {
   async redirects() {
     return [
       {
+        source: "/",
+        destination: `/${process.env.NEXT_PUBLIC_TARGET_FOLDER}`,
+        permanent: true,
+      },
+      {
         source: "/sistemas",
         destination: `/${process.env.NEXT_PUBLIC_SISTEMAS_FOLDER}`,
         permanent: true,
@@ -28,7 +33,7 @@ module.exports = {
       },
       {
         source: "/electromecanica",
-        destination: `/${process.env.NEXT_ELECTROMECANICA_FOLDER}`,
+        destination: `/${process.env.NEXT_PUBLIC_ELECTROMECANICA_FOLDER}`,
         permanent: true,
       },
       {
