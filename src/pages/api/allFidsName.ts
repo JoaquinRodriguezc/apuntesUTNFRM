@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { drive } from "../../../../utils/drive";
+import { drive } from "../../utils/drive";
 import { drive_v3 } from "googleapis";
 import { unstable_cache } from "next/cache";
+import { get } from "http";
 
 //GET - FILES IN A FOLDER GET API/FOLDER/[fid]/FILES
 // TODO: CHECK REQ.METHOD
@@ -9,33 +10,21 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const fid = req.query.fid as string;
-  const query = req.query.query;
-  if (query) {
-    const folders = await getFolders(fid);
-    const data: drive_v3.Schema$FileList = (
-      await drive.files.list({
-        fields: "files/webViewLink,files/name,files/id,files/mimeType",
-        q: `mimeType!='application/vnd.google-apps.folder' and trashed = false and parents in '${folders.join(
-          "','"
-        )}' and (name contains '${query}' or fullText contains '${query}')`,
-      })
-    ).data;
-    return res.status(200).json(data);
-  } else {
-    const data: drive_v3.Schema$FileList = (
-      await drive.files.list({
-        fields: "files/webViewLink,files/name,files/id,files/mimeType",
-        q: `mimeType!='application/vnd.google-apps.folder' and trashed = false and parents in '${fid}'`,
-      })
-    ).data;
-    return res.status(200).json(data);
-  }
+  const fid =
+    req.query.fid !== "undefined"
+      ? (req.query.fid as string)
+      : (process.env.NEXT_PUBLIC_TARGET_FOLDER as string);
+  return res
+    .status(200)
+    .json(await getFolderParents("1E4TVcYymK5-73b05_39XQW6QYiVf6b6s"));
 }
 export async function getFolderParents(fid: string): Promise<string[]> {
   const targetFolderId = process.env.NEXT_PUBLIC_TARGET_FOLDER!;
   let folderIds = [targetFolderId];
   async function getFolderId(fid: string) {
+    if (fid === "undefined") {
+      fid = targetFolderId;
+    }
     const response: drive_v3.Schema$FileList = (
       await drive.files.list({
         fields: "files/webViewLink,files/name,files/id,files/mimeType",
@@ -44,8 +33,9 @@ export async function getFolderParents(fid: string): Promise<string[]> {
     ).data;
     const subFolders = response.files || [];
     for (const folder of subFolders) {
+      console.log(folder.id, folder.name);
       folderIds.push(folder.id!);
-      await getFolderId(folder.id!);
+      //  await getFolderId(folder.id!);
     }
   }
   await getFolderId(fid);

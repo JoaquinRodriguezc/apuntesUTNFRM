@@ -1,13 +1,12 @@
 import { useFetchData } from "../common/useFetchData";
 import PlayBookFolders from "../common/PlayBookFolders";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 
-export default function PlayBookFoldersContainer() {
-  const router = useRouter();
-  console.log(router.query);
+export default function PlayBookFoldersContainer({ fid }: { fid: string }) {
   const { data, loading, error } = useFetchData(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/folders/${router.query.fid}/folders`
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/folders/${fid}/folders`
   );
+  if (loading) {
+    return;
+  }
   return <PlayBookFolders folders={data?.files} />;
 }

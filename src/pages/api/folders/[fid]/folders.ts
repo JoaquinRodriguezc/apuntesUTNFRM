@@ -8,10 +8,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const fid =
-    req.query.fid !== "undefined"
-      ? (req.query.fid as string)
-      : process.env.NEXT_PUBLIC_TARGET_FOLDER;
+  const fid = req.query.fid as string;
   const data: drive_v3.Schema$FileList = (
     await drive.files.list({
       q: `mimeType='application/vnd.google-apps.folder' and trashed = false and parents in '${fid}'`,

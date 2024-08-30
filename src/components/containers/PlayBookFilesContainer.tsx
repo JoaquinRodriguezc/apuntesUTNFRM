@@ -6,12 +6,13 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 export default function PlayBookFoldersContainer({
   files,
+  fid,
 }: {
+  fid: string;
   files?: drive_v3.Schema$File[];
 }) {
-  const router = useRouter();
   const { data, loading, error } = useFetchData(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/folders/${router.query.fid}/files`
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/folders/${fid}/files`
   );
   if (files) {
     return <PlayBookFiles files={files} />;

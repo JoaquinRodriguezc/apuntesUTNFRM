@@ -7,10 +7,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const fid =
-    req.query.fid !== "undefined"
-      ? (req.query.fid as string)
-      : process.env.NEXT_PUBLIC_TARGET_FOLDER;
+  const fid = req.query.fid as string;
 
   if (req.query.search as string) {
     const response: any = (
