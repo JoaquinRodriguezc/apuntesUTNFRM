@@ -14,12 +14,12 @@ export default function PlayBookFolders({ folders }: PlayBookFoldersProps) {
         folders.map((d) => (
           <Link
             href={{
-              pathname: `/list/[fid]`,
+              pathname: `/[fid]`,
               query: {
                 fid: d.id,
               },
             }}
-            as={`/list/${d.id}`}
+            as={`/${d.id}`}
             key={d.id}
             className="w-full"
           >

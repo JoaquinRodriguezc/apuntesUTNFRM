@@ -11,7 +11,7 @@
 # next.js
 /.next/
 /out/
-
+mapeo.json
 # production
 /build
 secret.key.json

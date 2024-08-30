@@ -6,13 +6,13 @@ export default function BackButton({ data }: { data: string }) {
   return (
     <Link
       href={{
-        pathname: `/list/[fid]`,
+        pathname: `/[fid]`,
         query: {
           fid: data,
           fname: "get me",
         },
       }}
-      as={`/list/${data}`}
+      as={`/${data}`}
       key={data}
     >
       <button

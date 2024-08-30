@@ -4,6 +4,6 @@ import { useEffect } from "react";
 export default function Home() {
   const router = useRouter();
   useEffect(() => {
-    router.push(`/list/${process.env.NEXT_PUBLIC_TARGET_FOLDER}`);
+    router.push(`/${process.env.NEXT_PUBLIC_TARGET_FOLDER}`);
   });
 }
