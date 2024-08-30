@@ -7,6 +7,11 @@ module.exports = {
         permanent: true,
       },
       {
+        source: "/civil",
+        destination: `/${process.env.NEXT_PUBLIC_CIVIL_FOLDER}`,
+        permanent: true,
+      },
+      {
         source: "/quimica",
         destination: `/${process.env.NEXT_PUBLIC_QUIMICA_FOLDER}`,
         permanent: true,
