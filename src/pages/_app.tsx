@@ -1,13 +1,12 @@
 import "../styles/globals.css";
 import Layout from "../layouts/layout";
 import { AppProps } from "next/app";
-import Script from "next/script";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Layout>
       <Component {...pageProps} />
-	<Analytics/>
+      <Analytics />
     </Layout>
   );
 }
