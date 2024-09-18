@@ -35,7 +35,7 @@ export default function PlayBookFolders({ folders }: PlayBookFoldersProps) {
               <Image
                 src={Folder}
                 alt="Picture of the author"
-                className="h-1/6 w-1/12"
+                className="h-14 w-14"
               />
               {d.name}
               <svg
