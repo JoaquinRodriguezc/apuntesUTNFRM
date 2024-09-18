@@ -47,7 +47,7 @@ export default function PlayBookFiles({ files }: PlayBookFilesProps) {
           files.map((result) => (
             <li
               key={result.id}
-              className="p-5 h-14 w-full flex text-white flex-row rounded-md bg-[#6e6e6e]  duration-500 font-semibold text-lg"
+              className="p-5 w-full flex text-white flex-row rounded-md bg-gray-700 hover:bg-gray-800 transition font-semibold text-lg"
             >
               <a
                 href={result.webViewLink as string}
@@ -56,10 +56,10 @@ export default function PlayBookFiles({ files }: PlayBookFilesProps) {
                 rel="noopener noreferrer"
                 data-mime-type={result.mimeType}
                 //  onClick={handleGoogleDriveShortcutLink}
-                className="flex flex-row items-center gap-2"
+                className="flex flex-row items-center gap-5"
               >
                 <FontAwesomeIcon
-                  className="h-8"
+                  className="h-9"
                   icon={getIconByMime(result.mimeType as string)}
                 />
                 {result.name}

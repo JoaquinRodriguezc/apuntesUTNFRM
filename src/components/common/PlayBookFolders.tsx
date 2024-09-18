@@ -24,7 +24,7 @@ export default function PlayBookFolders({ folders }: PlayBookFoldersProps) {
             className="w-full"
           >
             <button
-              className="w-full rounded-md px-3 py-2 flex justify-between text-white items-center cursor-pointer bg-neutral-800 shadow-lg hover:shadow-950  hover:scale-105 duration-500 font-semibold lg:text-2xl"
+              className="w-full rounded-md px-3 py-2 flex justify-between text-white items-center bg-blue-950  hover:scale-105 transition font-semibold lg:text-2xl"
               onClick={() => {
                 const container = document.querySelector(".searchContainer");
                 if (container) {

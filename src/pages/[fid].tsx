@@ -10,7 +10,7 @@ export default function Drilldown() {
   console.log(fid);
   return (
     fid && (
-      <div className="flex  m-auto items-center w-[90%] lg:w-1/2 justify-center flex-col">
+      <div className="flex  m-auto items-center w-[90%] lg:w-1/2 justify-center flex-col gap-8">
         <Banner/>
         <FolderNameContainer fid={fid} />
         <PlayBookFoldersContainer fid={fid} />
