@@ -43,7 +43,7 @@ export default function SearchGoogleDrive({
     }
   }
   return (
-    <div className="h-max opacity-20 w-full flex flex-row justify-center items-center gap-5">
+    <div className="h-max opacity-30 w-full flex flex-row justify-center items-center gap-5">
       <input
         type="text"
         value={query}
