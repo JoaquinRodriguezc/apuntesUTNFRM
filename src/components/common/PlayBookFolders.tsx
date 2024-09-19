@@ -24,7 +24,7 @@ export default function PlayBookFolders({ folders }: PlayBookFoldersProps) {
             className="w-full"
           >
             <button
-              className="w-full rounded-md px-3 py-2 flex justify-between text-white items-center bg-blue-950  hover:scale-105 transition font-semibold lg:text-2xl"
+              className="w-full rounded-md px-3 py-2 flex justify-between text-white items-center bg-blue-600  hover:scale-105 transition font-semibold lg:text-2xl"
               onClick={() => {
                 const container = document.querySelector(".searchContainer");
                 if (container) {
@@ -37,7 +37,9 @@ export default function PlayBookFolders({ folders }: PlayBookFoldersProps) {
                 alt="Picture of the author"
                 className="h-14 w-14"
               />
-              {d.name}
+              <div className="px-1">
+                {d.name}
+              </div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
