@@ -3,7 +3,7 @@ import Link from "next/link";
 const LinksList = () => {
   return (
     <nav aria-label="Global" className="sm:hidden md:hidden lg:block">
-      <ul className="flex flex-wrap items-center gap-6 font-semibold text-md">
+      <ul className="flex flex-wrap items-center justify-center gap-5 font-semibold text-md">
         <li>
           <Link
             href={process.env.NEXT_PUBLIC_INGRESO_FOLDER ?? "#"}
