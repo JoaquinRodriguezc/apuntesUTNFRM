@@ -11,7 +11,7 @@ const Banner = () => {
           </strong>
         </h1>
 
-        <p className="sm:text-xl/relaxed">
+        <p className="hidden sm:block sm:text-xl/relaxed">
           En esta página encontrarás apuntes, documentos y recursos útiles para
           estudiar. Aquí reunimos todo para facilitar el acceso a la
           información.
