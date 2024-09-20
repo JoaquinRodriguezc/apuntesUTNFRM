@@ -41,6 +41,11 @@ module.exports = {
         destination: `/${process.env.NEXT_PUBLIC_BASICAS_FOLDER}`,
         permanent: true,
       },
+      {
+        source: "/prof-marques",
+        destination: `/${process.env.NEXT_PUBLIC_MARQUES}`,
+        permanent: true,
+      },
     ];
   },
 };
