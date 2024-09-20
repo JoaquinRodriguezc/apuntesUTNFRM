@@ -33,8 +33,8 @@ const LinksList = () => {
   ];
 
   return (
-    <nav aria-label="Global" className="sm:hidden md:hidden lg:block">
-      <ul className="flex flex-wrap items-center justify-center gap-5 font-semibold text-md">
+    <nav aria-label="Global" className="px-2">
+      <ul className="flex flex-wrap items-center justify-center font-semibold text-sm sm:text-md gap-2 sm:gap-5">
         {links.map((link, index) => (
           <li key={index}>
             <Link
