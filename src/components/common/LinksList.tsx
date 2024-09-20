@@ -9,7 +9,7 @@ const LinksList = () => {
             href={process.env.NEXT_PUBLIC_INGRESO_FOLDER ?? "#"}
             className="text-black transition hover:text-black/75"
           >
-            Ingreso
+            INGRESO
           </Link>
         </li>
 
@@ -18,7 +18,7 @@ const LinksList = () => {
             href={process.env.NEXT_PUBLIC_SISTEMAS_FOLDER ?? "#"}
             className="text-black transition hover:text-black/75"
           >
-            Ing Sist Inf
+            SISTEMAS
           </Link>
         </li>
 
@@ -27,7 +27,7 @@ const LinksList = () => {
             href={process.env.NEXT_PUBLIC_ELECTRONICA_FOLDER ?? "#"}
             className="text-black transition hover:text-black/75"
           >
-            Ing Electrónica
+            ELECTRÓNICA
           </Link>
         </li>
 
@@ -36,7 +36,7 @@ const LinksList = () => {
             href={process.env.NEXT_PUBLIC_BASICAS_FOLDER ?? "#"}
             className="text-black transition hover:text-black/75"
           >
-            Básicas
+            BÁSICAS
           </Link>
         </li>
 
@@ -45,7 +45,7 @@ const LinksList = () => {
             href={process.env.NEXT_PUBLIC_QUIMICA_FOLDER ?? "#"}
             className="text-black transition hover:text-black/75"
           >
-            Ing Química
+            QUÍMICA
           </Link>
         </li>
 
@@ -54,7 +54,7 @@ const LinksList = () => {
             href={process.env.NEXT_PUBLIC_ELECTROMECANICA_FOLDER ?? "#"}
             className="text-black transition hover:text-black/75"
           >
-            Ing Electromecánica
+            ELECTROMECÁNICA
           </Link>
         </li>
 
@@ -63,7 +63,7 @@ const LinksList = () => {
             href={process.env.NEXT_PUBLIC_CIVIL_FOLDER ?? "#"}
             className="text-black transition hover:text-black/75"
           >
-            Ing Civil
+            CIVIL
           </Link>
         </li>
       </ul>
