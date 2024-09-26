@@ -1,27 +1,38 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { drive } from "../../utils/drive";  // Ajusta la ruta según donde esté tu archivo drive.ts
+import { drive } from "../../utils/drive";
 import { drive_v3 } from "googleapis";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-    const fid = process.env.NEXT_PUBLIC_TARGET_FOLDER;
-    console.log("Estoy en el arrayList: "+fid);
-    
+  const fids = [
+    process.env.NEXT_PUBLIC_QUIMICA_FOLDER,
+    process.env.NEXT_PUBLIC_SISTEMAS_FOLDER,
+    process.env.NEXT_PUBLIC_ELECTRONICA_FOLDER,
+    process.env.NEXT_PUBLIC_ELECTROMECANICA_FOLDER,
+    process.env.NEXT_PUBLIC_CIVIL_FOLDER,
+    process.env.NEXT_PUBLIC_BASICAS_FOLDER,
+    process.env.NEXT_PUBLIC_INGRESO_FOLDER,
+  ];
 
-    if (!fid) {
-      return res.status(400).json({ message: "NO TENGO EL .ENV :(" });
-    }
+  if (fids.length === 0) {
+    return res.status(400).json({ message: "NO TENGO RUTAS" });
+  }
 
-    const folderParents = await getFolderParents(fid);
+  const folderParentsArray = await Promise.all(
+    fids.map((fid) => getFolderParents(fid!))
+  );
 
-    return res.status(200).json({ folderParents });
+  const allFolderParents = folderParentsArray.flat();
+
+  return res.status(200).json({ allFolderParents });
 }
 
-// Función para obtener los padres de una carpeta
 async function getFolderParents(fid: string): Promise<string[]> {
   let folderIds: string[] = [];
+
+  console.log("Estoy en en el GETFOLDERPARENTS");
 
   async function getFolderId(fid: string) {
     const response: drive_v3.Schema$FileList = (
@@ -36,7 +47,6 @@ async function getFolderParents(fid: string): Promise<string[]> {
       folderIds.push(folder.id!);
       await getFolderId(folder.id!);
       console.log("Estoy en la carpeta: " + folder.id);
-      
     }
   }
 
