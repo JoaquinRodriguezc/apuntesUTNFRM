@@ -30,7 +30,7 @@ const NavBar = () => {
           </div>
 
           <button
-            className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 lg:hidden"
+            className=" hidden rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75"
             onClick={haddleSideMenu}
           >
             <span className="sr-only">Toggle menu</span>
@@ -52,14 +52,15 @@ const NavBar = () => {
         </div>
       </div>
       {toggleSideMenu && (
-        <div className="flex h-screen flex-col justify-between border-e bg-white">
-          <div className="px-4 py-6 flex flex-col gap-5">
-            <GoogleDriveSearch setResults={setResults} />
-            <LinksList />
-          </div>
+        <div className="absolute w-full">
+          <div className="flex h-screen flex-col justify-between border-e bg-white">
+            <div className="px-4 py-6 flex flex-col gap-5">
+              <GoogleDriveSearch setResults={setResults} />
+            </div>
 
-          <div className="sticky inset-x-0 bottom-0 border-t border-gray-100 w-full text-center">
-            <h2 className="text-xl font-medium p-5">Apuntes UTN Mendoza</h2>
+            <div className="sticky inset-x-0 bottom-0 border-t border-gray-100 w-full text-center">
+              <h2 className="text-xl font-medium p-5">Apuntes UTN Mendoza</h2>
+            </div>
           </div>
         </div>
       )}
