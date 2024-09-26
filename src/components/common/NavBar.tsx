@@ -30,7 +30,7 @@ const NavBar = () => {
           </div>
 
           <button
-            className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 lg:hidden"
+            className="hidden rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75"
             onClick={haddleSideMenu}
           >
             <span className="sr-only">Toggle menu</span>
