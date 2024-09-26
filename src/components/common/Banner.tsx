@@ -38,7 +38,7 @@ const Banner = () => {
 
           <Link
             className="h-min flex flex-row w-max rounded-md font-semibold text-white text-lg sm:text-xl p-3 bg-blue-600 hover:bg-blue-700 transition gap-2 sm:gap-5"
-            href="#"
+            href="https://drive.google.com/drive/folders/1XqAJvCCtzAFxJ5hlaerHdUF8qgCsPCVi"
             target="_blank"
           >
             <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" className="h-7 sm:h-8">
