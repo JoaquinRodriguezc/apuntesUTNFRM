@@ -17,7 +17,7 @@ export default function SearchGoogleDrive({
 
   useEffect(() => {
     setResults([]);
-  }, [router.asPath]);
+  }, [fid, setResults]);
 
   async function searchFiles() {
     setError(null);
@@ -35,6 +35,8 @@ export default function SearchGoogleDrive({
         setError(err);
       }
     }
+    console.log(query);
+    console.log(setResults);
   }
 
   function handleKeyPress(event: React.KeyboardEvent) {
@@ -51,12 +53,10 @@ export default function SearchGoogleDrive({
         onKeyDown={handleKeyPress}
         className="md:w-full lg:w-96 p-4 rounded-md border-2 border-solid border-black text-black"
         placeholder="Apuntes UTN"
-        disabled
       />
       <button
         onClick={searchFiles}
         className="w-full lg:w-1/4 p-4 text-white rounded-md bg-blue-600 hover:bg-blue-700 duration-200 font-semibold"
-        disabled
       >
         Buscar
       </button>
