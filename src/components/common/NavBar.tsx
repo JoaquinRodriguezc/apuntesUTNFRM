@@ -12,7 +12,7 @@ const NavBar = () => {
   }
 
   return (
-    <header className="bg-white">
+    <header className="bg-white hidden sm:block">
       <div className="mx-auto flex h-24 max-w-screen items-center gap-8 px-6 sm:px-10 lg:px-16">
         <div className="block">
           <span className="sr-only">Inicio</span>
