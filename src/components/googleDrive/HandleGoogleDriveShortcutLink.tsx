@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
-import handleAccessTokenExpiration from "./HandleAccessTokenExpiration";
 
 const handleGoogleDriveShortcutLink = async (event: any) => {
   const link = event.target;
@@ -27,12 +25,7 @@ const handleGoogleDriveShortcutLink = async (event: any) => {
         `https://docs.google.com/document/d/${targetId}/edit`,
         "_blank"
       );
-    } catch (err: any) {
-      if (err.response && err.response.status === 401) {
-        handleAccessTokenExpiration();
-      } else {
-      }
-    }
+    } catch (err: any) {}
   }
 };
 
