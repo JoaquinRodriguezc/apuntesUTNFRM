@@ -34,7 +34,7 @@ export default function Drilldown() {
   );
   return (
     <NoSRR>
-      <div className="flex items-center min-h-screen justify-center flex-col">
+      <div className="flex items-center min-h-screen justify-start flex-col">
         <PlayBookFolders folders={folders} />
         <PlayBookFiles files={files} />
       </div>
